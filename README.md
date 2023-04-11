@@ -6,15 +6,25 @@ This repository contains instructions and fies for deploying ZPA LSS logs into M
 
 Deploy VM with Azure Monitor Agent Extension - https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal 
 
+Ensure the VM has its syslog daemon enabled to receive logs on TCP port 514.
+
 ## Step 2:
 
-Collect text logs with Azure Monitor Agent - https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal 
+Deploy an App Connector and LSS as per the following guide - https://help.zscaler.com/zpa/connector-deployment-guide-microsoft-azure 
+
+Ensure you configure the Log Receiver to be the Public IP address of the VM with the Azure Monitor Agent Extension installed and configured to receive logs on TCP port 514.
+
+While configuring the Log Receiver, choose JSON as Log Template
 
 ## Step 3:
 
-Create a new table called ZPA2_CL using the CreateTable.ps1 powershell script. Ensure you replace the subscription, resource group and workspace name with the details from your Microsfot Sentinel instance.
+Collect text logs with Azure Monitor Agent - https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal 
 
 ## Step 4:
+
+Create a new table called ZPA2_CL using the CreateTable.ps1 powershell script. Ensure you replace the subscription, resource group and workspace name with the details from your Microsfot Sentinel instance.
+
+## Step 5:
 
 Under Home > Monitor > Data Collection Rules > + Add a Data Source with the following information -
 
@@ -23,7 +33,7 @@ Under Home > Monitor > Data Collection Rules > + Add a Data Source with the foll
 - Table Name: ZPA2_CL
 - Transform: source
 
-## Step 5:
+## Step 6:
 
 Under Home > Monitor > Logs create a new querty, and paste in the contents of the file ZPA2Event.kql
 
