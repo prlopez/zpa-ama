@@ -1,6 +1,6 @@
 # Overview
 
-This repository contains instructions and fies for deploying ZPA LSS logs into Microsoft Sentinel using the Azure Monitor Agent.
+This repository contains instructions and files for deploying ZPA LSS logs into Microsoft Sentinel using the Azure Monitor Agent.
 
 ## Step 1:
 
@@ -18,13 +18,11 @@ While configuring the Log Receiver, choose JSON as Log Template
 
 ## Step 3:
 
-Collect text logs with Azure Monitor Agent - https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal 
-
-## Step 4:
+Collect text logs with Azure Monitor Agent - https://learn.microsoft.com/en-us/azure/azure-monitor/agents/data-collection-text-log?tabs=portal
 
 Create a new table called ZPA2_CL using the CreateTable.ps1 powershell script. Ensure you replace the subscription, resource group and workspace name with the details from your Microsfot Sentinel instance.
 
-## Step 5:
+## Step 4:
 
 Under Home > Monitor > Data Collection Rules > + Add a Data Source with the following information -
 
@@ -33,7 +31,7 @@ Under Home > Monitor > Data Collection Rules > + Add a Data Source with the foll
 - Table Name: ZPA2_CL
 - Transform: source
 
-## Step 6:
+## Step 5:
 
 Under Home > Monitor > Logs create a new querty, and paste in the contents of the file ZPA2Event.kql
 
